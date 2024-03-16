@@ -143,7 +143,7 @@ namespace SummaBookWeb.Areas.Admin.Controllers
             OrderVM.OrderDetail = _unitOfWork.OrderDetail.GetAll(u => u.OrderHeaderId == OrderVM.OrderHeader.Id, includeProperties: "Product");
 
             //STRIPE LOGIC
-            var domain = "https://localhost:7154/";
+            var domain = Request.Scheme + "://" + Request.Host.Value + '/';
 
             var options = new Stripe.Checkout.SessionCreateOptions
             {

@@ -134,7 +134,7 @@ namespace SummaBookWeb.Areas.Customer.Controllers
             {
                 // it is a regular customer and we need to capture payment
 
-                var domain = "https://localhost:7154/";
+                var domain = Request.Scheme + "://" + Request.Host.Value + '/';
 
 				var options = new Stripe.Checkout.SessionCreateOptions
 				{
