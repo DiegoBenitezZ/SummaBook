@@ -1,0 +1,72 @@
+﻿@model RoleManagementVM
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">
+					Manage User Role
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row">
+			<div class="col-12">
+				<form method="post" class="row" enctype="multipart/form-data">
+					<input asp-for="applicationUser.Id" hidden/>
+					<div class="border p-3">
+						<div class="form-floating py-2 col-12">
+							<input asp-for="applicationUser.Name"  readonly class="form-control border-0 shadow" />
+							<label asp-for="applicationUser.Name"></label>
+							<span asp-validation-for="applicationUser.Name" class="text-danger"></span>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<select asp-for="applicationUser.Role" asp-items="@Model.roles" class="form-select border-0 shadow"></select>
+							<label asp-for="applicationUser.Role"></label>
+						</div>
+						<div class="form-floating py-2 col-12">
+							<select asp-for="applicationUser.CompanyId" asp-items="@Model.companies" class="form-select border-0 shadow"></select>
+							<label asp-for="applicationUser.CompanyId"></label>
+						</div>
+						<div class="col-12 py-2">
+							<button type="submit" class="btn btn-success">Save Changes</button>
+							<a asp-action="Index" class="btn btn-primary">Back to List</a>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="py-5"></div>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+
+	<script>
+		$(document).ready(function () {
+			var role_selector = $('#applicationUser_Role').find("option:selected");
+			var company_selector = $('#applicationUser_CompanyId');
+
+			changeVisibiltyCompany(company_selector, role_selector);
+
+			$('#applicationUser_Role').on("change", function () {
+				role_selector = $('#applicationUser_Role').find("option:selected");
+
+				changeVisibiltyCompany(company_selector, role_selector);
+			})
+
+			function changeVisibiltyCompany(target, source) {
+				if (source.text() == "Company") {
+					target.closest("div").show();
+				} else {
+					target.closest("div").hide();
+					target.val("--Select Company--")
+				}
+			}
+		})
+	</script>
+}

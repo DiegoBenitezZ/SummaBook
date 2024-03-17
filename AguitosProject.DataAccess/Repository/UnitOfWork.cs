@@ -20,6 +20,7 @@ namespace SummaBook.DataAccess.Repository
         public IOrderDetailRepository OrderDetail { get; set; }
         public IOrderHeaderRepository OrderHeader { get; set; }
         public IApplicationUserRepository ApplicationUser { get; set; }
+        public IProductImageRepository ProductImage { get; set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -31,7 +32,9 @@ namespace SummaBook.DataAccess.Repository
             OrderDetail = new OrderDetailRepository(_db);
             OrderHeader = new OrderHeaderRepository(_db);
             ApplicationUser = new ApplicationUserRepository(_db);
-        }
+			ProductImage = new ProductImageRepository(_db);
+
+		}
 
         public void Save()
         {

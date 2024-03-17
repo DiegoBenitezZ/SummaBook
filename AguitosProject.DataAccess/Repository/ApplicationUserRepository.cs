@@ -18,7 +18,7 @@ namespace SummaBook.DataAccess.Repository
             _db = db;
         }
 
-        public void Update(IApplicationUserRepository applicationUser)
+        public void Update(ApplicationUser applicationUser)
         {
             _db.Update(applicationUser);
         }

@@ -34,7 +34,7 @@ namespace SummaBookWeb.Areas.Customer.Controllers
                 );
             }
 
-            IEnumerable<Product> products = _unitOfWork.Product.GetAll();
+            IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "ProductImages");
             return View(products);
         }
 
@@ -42,7 +42,7 @@ namespace SummaBookWeb.Areas.Customer.Controllers
         {
             ShoppingCart shoppingCart = new()
             {
-                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category"),
+                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category,ProductImages"),
                 Count = 1,
                 ProductId = productId
             };

@@ -14,6 +14,7 @@ namespace SummaBook.DataAccess.Repository.IRepository
         IShoppingCartRepository ShoppingCart { get; set; }
         IOrderHeaderRepository OrderHeader { get; set; }
         IOrderDetailRepository OrderDetail { get; set; }
+        IProductImageRepository ProductImage { get; set; }
 
         IApplicationUserRepository ApplicationUser { get; set; }
 

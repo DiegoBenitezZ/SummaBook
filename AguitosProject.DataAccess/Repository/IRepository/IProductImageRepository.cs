@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SummaBook.DataAccess.Repository.IRepository
 {
-    public interface IApplicationUserRepository: IRepository<ApplicationUser>
-    {
-        void Update(ApplicationUser applicationUser);
-    }
+	public interface IProductImageRepository: IRepository<ProductImage>
+	{
+		void Update(IProductImageRepository obj);
+	}
 }
